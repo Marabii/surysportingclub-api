@@ -66,11 +66,12 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(
   cors({
-    origin: process.env.FRONT_END,
+    origin: "*", // Allows all domains
     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE"],
-    credentials: true,
+    credentials: true, // Note: with credentials true, wildcard '*' cannot be used, you might need to adjust this based on your security requirements
   })
 );
+
 
 connectDB();
 
