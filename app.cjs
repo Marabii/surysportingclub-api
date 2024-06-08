@@ -100,8 +100,8 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: sessionStore,
+    proxy: true,
     cookie: {
-      domain: "ssc.surysportingclub.com",
       secure: true,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24,
