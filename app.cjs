@@ -68,6 +68,7 @@ const corsOptions = {
   origin: (origin, callback) => {
     const allowedOrigins = [
       "https://ssc.surysportingclub.com",
+      "https://surysportingclub-api-9q57.onrender.com",
     ]; // Add more origins as needed
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true); // Allow specific origins
