@@ -40,7 +40,7 @@ router.post("/api/register", async (req, res, next) => {
       salt: salt,
       admin: false,
       email: req.body.email,
-      member: req.body.member === "on" ? true : false,
+      member: req.body.member
     });
 
     // Send verification email
