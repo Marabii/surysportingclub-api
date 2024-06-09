@@ -57,9 +57,8 @@ router.post("/api/register", async (req, res, next) => {
     };
 
     // Redirect to verification page
-    res.redirect(
-      `${process.env.FRONT_END}/verifyEmail/${req.body.email}/${token}`
-    );
+    res.json({ redirectUrl: `${process.env.FRONT_END}/verifyEmail/${req.body.email}/${token}` });
+
   } catch (error) {
     console.error("Registration error:", error);
     res.status(500).send("Failed to register");
