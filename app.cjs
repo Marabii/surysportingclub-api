@@ -61,16 +61,18 @@ const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 console.log("FRONT_END", process.env.FRONT_END);
 
-
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 const corsOptions = {
   origin: (origin, callback) => {
-    const allowedOrigins = ['https://ssc.surysportingclub.com'];  // Add more origins as needed
+    const allowedOrigins = [
+      "https://ssc.surysportingclub.com",
+      "http://localhost:3000",
+    ]; // Add more origins as needed
     if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);  // Allow specific origins
+      callback(null, true); // Allow specific origins
     } else {
-      callback(new Error('Not allowed by CORS'));
+      callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true,
@@ -78,8 +80,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-
 
 connectDB();
 
@@ -92,16 +92,14 @@ const sessionStore = new MongoStore({
   collection: "sessions",
 });
 
-app.set("trust proxy", 1);
-
 app.use(
   session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
     store: sessionStore,
-    proxy: true,
     cookie: {
+      domain: process.env.FRONT_END,
       secure: true,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24,
