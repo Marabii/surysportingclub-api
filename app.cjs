@@ -67,7 +67,6 @@ const corsOptions = {
   origin: (origin, callback) => {
     const allowedOrigins = [
       "https://ssc.surysportingclub.com",
-      "http://localhost:3000",
     ]; // Add more origins as needed
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true); // Allow specific origins
@@ -102,7 +101,6 @@ app.use(
       secure: true,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24,
-      sameSite: "none",
     },
   })
 );
