@@ -99,7 +99,6 @@ app.use(
     saveUninitialized: false,
     store: sessionStore,
     cookie: {
-      domain: process.env.FRONT_END,
       secure: true,
       httpOnly: true,
       maxAge: 1000 * 60 * 60 * 24,
